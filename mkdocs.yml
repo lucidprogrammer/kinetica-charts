@@ -1,0 +1,246 @@
+# yaml-language-server: $schema=https://squidfunk.github.io/mkdocs-material/schema.json
+site_name: Kinetica for Kubernetes
+site_author: Kinetica
+site_description: >-
+  Kinetica for Kubernetes
+site_url: https://www.kinetica.com
+# Repository
+repo_name: kineticadb/charts
+repo_url: https://github.com/kineticadb/charts
+edit_uri: ""
+
+# Copyright
+copyright: Copyright &copy; 2016 - 2024 Kinetica DB Inc.
+
+theme:
+  logo: assets/kinetica_logo.png
+  favicon: assets/favicon.ico
+  name: material
+  # Default values, taken from mkdocs_theme.yml
+  language: en
+  features:
+    - announce.dismiss
+    - content.tooltips
+    - content.code.copy
+    - content.code.annotate
+    - content.tabs.link
+    - header.autohide
+    - navigation.expand
+    - navigation.footer
+    - navigation.indexes
+    - navigation.instant
+    - navigation.instant.progress
+    - navigation.prune
+    - navigation.sections
+    - navigation.top
+    - navigation.tracking
+    - search.highlight
+    - search.share
+    - search.suggest
+    - tags
+    - navigation.tabs
+    - navigation.tabs.sticky
+    # - toc.integrate
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+    - scheme: slate
+      primary: red
+      accent: red
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+  font:
+    text: Roboto
+    code: Roboto Mono
+  icon:
+    repo: fontawesome/brands/github
+    tag:
+      advanced: material/ninja
+      getting_started: material/shovel
+      storage: simple/googlecloudstorage
+      ingress: simple/ingress
+      network: material/network
+
+# Plugins
+plugins:
+  - tags:
+      tags_file: tags.md
+  - glightbox:
+      zoomable: true
+      draggable: true
+      skip_classes:
+        - skip-lightbox
+      auto_caption: true
+  - search
+  - minify:
+      minify_html: true
+  - macros
+  - mike:
+      # These fields are all optional; the defaults are as below...
+      alias_type: symlink
+      redirect_template: null
+      deploy_prefix: ''
+      canonical_version: null
+      version_selector: true
+      css_dir: css
+      javascript_dir: js
+#  - git-revision-date-localized:
+#      type: timeago
+#      locale: en
+#      fallback_to_build_date: true
+#      exclude:
+#        - index.md
+#  - redirects:
+#      redirect_maps:
+#        changelog/insiders.md: insiders/changelog.md
+#        upgrading.md: upgrade.md
+#        sponsorship.md: insiders/index.md
+
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - abbr
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - md_in_html
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
+      options:
+        custom_icons:
+          - includes/.icons
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+  - pymdownx.highlight:
+      line_spans: __span
+      auto_title: true
+      anchor_linenums: true
+      use_pygments: true
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.pathconverter
+  - pymdownx.saneheaders
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+      auto_append:
+        - includes/abbreviations.md
+  - pymdownx.superfences:
+#      custom_fences:
+#        - name: mermaid
+  #          class: mermaid
+#          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed:
+      alternate_style: true
+      slugify: !!python/object/apply:pymdownx.slugs.slugify
+        kwds:
+          case: lower
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
+# Page tree
+nav:
+  - Home: index.md
+  - Setup:
+      - Setup/index.md
+      - Getting Started:
+          - GettingStarted/index.md
+          - Quickstart: GettingStarted/quickstart.md
+          - Preparation & Prerequisites: GettingStarted/preparation_and_prerequisites.md
+          - Installation:
+              - GettingStarted/installation.md
+              - CPU: GettingStarted/installation_cpu.md
+              - GPU: GettingStarted/installation_gpu.md
+          - Amazon EKS: GettingStarted/eks.md
+          - Azure AKS: GettingStarted/aks.md
+      - Advanced Topics:
+          - Advanced/index.md
+          - Alternative Charts: Advanced/alternative_charts.md
+          - Ingress Configuration: Advanced/ingress_configuration.md
+          - Air-Gapped Environments: Advanced/airgapped.md
+          - S3 Storage for Dev/Test: Advanced/minio_s3_dev_test.md
+          - Enabling Backup/Restore: Advanced/velero_backup_restore.md
+          - Kinetica DB on OS X (Arm64):  Advanced/kinetica_mac_arm_k8s.md
+  - Advanced:
+      Advanced/index.md
+  - Operations:
+      - Operations/index.md
+      - Monitoring:
+          - Metrics & Monitoring: Monitoring/metrics_and_monitoring.md
+          - Logs: Monitoring/logs.md
+          - OpenTelemetry: Operations/otel.md
+  - Administration:
+      - Administration/index.md
+      - User Management: Administration/user_management.md
+      - Role Management: Administration/role_management.md
+  - Architecture & Design:
+      - Architecture/index.md
+      - Architecture:
+        - Core Database Architecture: Architecture/db_architecture.md
+        - Kubernetes Architecture: Architecture/kinetica_for_kubernetes_architecture.md
+  - Support:
+      - Support/index.md
+      - Help & Tutorials: Help/help_and_tutorials.md
+      - Troubleshooting: Troubleshooting/troubleshooting.md
+      - FAQ: Help/faq.md
+  - Reference:
+    - Reference/index.md
+    - Kinetica Helm Chart Reference:
+        - Kinetica Operators: Reference/helm_kinetica_operators.md
+    - Kinetica Cluster CRD/CR Reference:
+      - Kinetica Clusters Reference: Reference/kinetica_clusters.md
+      - Kinetica Cluster Users Reference: Reference/kinetica_cluster_users.md
+      - Kinetica Cluster Roles Reference: Reference/kinetica_cluster_roles.md
+      - Kinetica Cluster Grants Reference: Reference/kinetica_cluster_grants.md
+      - Kinetica Cluster Resource Groups Reference: Reference/kinetica_cluster_resource_groups.md
+      - Kinetica Cluster Schemas Reference: Reference/kinetica_cluster_schemas.md
+      - Kinetica Cluster Admins Reference: Reference/kinetica_cluster_admins.md
+      - Kinetica Cluster Backups Reference: Reference/kinetica_cluster_backups.md
+      - Kinetica Cluster Restores Reference: Reference/kinetica_cluster_restores.md
+    - Workbench CRD/CR Reference:
+        - Kinetica Workbench Reference: Reference/kinetica_workbench.md
+  - Categories: tags.md
+
+extra:
+  status:
+    new: Recently added
+    deprecated: Will be removed in a future version
+    beta: Upcoming functionality (Dev Only)
+  tag:
+    Storage: storage
+    Ingress: ingress
+    Network: network
+    Architecture: architecture
+    Advanced: advanced
+    Getting Started: getting_started
+    Support: support
+    Reference: reference
+  homepage: https://www.kinetica.com
+  version:
+    provider: mike
+  kinetica_full_version: v7.2.0-11.ga-2
+  helm_chart_version: 72.0.11
+
+watch:
+    - includes
